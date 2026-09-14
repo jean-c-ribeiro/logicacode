@@ -28,7 +28,7 @@
         }
 
         .epic-text {
-            font-family: 'UnifrakturMaguntia', cursive;
+            font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', cursive;
             font-size: 6vw;
             color: #ffffff;
             margin: 0;
@@ -40,6 +40,19 @@
                 0 0 80px #8a2be2,
                 0 0 120px #8a2be2;
             animation: glowPulse 2.5s infinite alternate, introFade 3s ease-out forwards;
+            opacity: 0;
+        }
+
+        .signature {
+            font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', cursive;
+            font-size: 1.6vw;
+            color: #ffffff;
+            margin: 0.6em 0 0;
+            letter-spacing: 2px;
+            text-shadow:
+                0 0 6px #00f3ff,
+                0 0 14px #8a2be2;
+            animation: glowPulse 2.5s infinite alternate, introFade 3s ease-out 0.3s forwards;
             opacity: 0;
         }
 
@@ -70,54 +83,52 @@
     
     <div class="container">
         <h1 class="epic-text">hello world, meu consagrado!</h1>
-        <h4 class="epic-text">-Jean Carlos </h4>
-        
+        <h4 class="signature">-Jean Carlos</h4>
     </div>
 
     <script>
         const canvas = document.getElementById('neonCanvas');
         const ctx = canvas.getContext('2d');
-        
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
 
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*<>/?;{}[]';
         const fontSize = 16;
-        const columns = canvas.width / fontSize;
-        const drops = [];
+        let drops = [];
 
-        for (let x = 0; x < columns; x++) {
-            drops[x] = 1;
+        function setupDrops() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            const columns = Math.ceil(canvas.width / fontSize);
+            drops = new Array(columns).fill(1);
         }
+        setupDrops();
 
         function drawMatrix() {
             // Rastro escuro para o efeito de cauda das letras
             ctx.fillStyle = 'rgba(3, 0, 10, 0.1)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
+
             ctx.font = fontSize + 'px monospace';
-            
+
             for (let i = 0; i < drops.length; i++) {
                 const text = characters.charAt(Math.floor(Math.random() * characters.length));
-                
+
                 // Alterna as cores das partículas entre azul e roxo neon
                 ctx.fillStyle = Math.random() > 0.5 ? '#00f3ff' : '#8a2be2';
-                
+
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                
+
                 if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
                     drops[i] = 0;
                 }
                 drops[i]++;
             }
+
+            requestAnimationFrame(drawMatrix);
         }
 
-        setInterval(drawMatrix, 50);
+        requestAnimationFrame(drawMatrix);
 
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
+        window.addEventListener('resize', setupDrops);
     </script>
 </body>
 </html>
