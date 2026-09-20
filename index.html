@@ -39,15 +39,40 @@
     <section id="projetos" class="section"><div class="wrap"><div class="section-heading reveal"><div><div class="eyebrow">Projetos selecionados</div><h2>Trabalho com propósito e personalidade.</h2></div><p>Algumas direções visuais que mostram o tipo de experiência que podemos construir para sua empresa.</p></div><div class="work-grid"><a class="project reveal" href="#contato"><div class="project-art art-game"></div><div class="project-content"><div class="project-tag">Landing page / Tech</div><h3>Gaming, com energia máxima.</h3><p>Uma vitrine imersiva para produtos que pedem atenção.</p></div><span class="project-arrow">↗</span></a><a class="project reveal" href="#contato"><div class="project-art art-digital"></div><div class="project-content"><div class="project-tag">Institucional / Consultoria</div><h3>Clareza para quem vende ideias.</h3><p>Conteúdo organizado para ganhar confiança antes da conversa.</p></div><span class="project-arrow">↗</span></a><a class="project reveal" href="#contato"><div class="project-art art-shop"></div><div class="project-content"><div class="project-tag">E-commerce / Lifestyle</div><h3>Uma loja que convida a explorar.</h3><p>Visual expressivo e uma jornada simples até a compra.</p></div><span class="project-arrow">↗</span></a></div></div></section>
     <section id="sobre" class="section"><div class="wrap about"><div class="reveal"><div class="eyebrow">Por trás da tela</div><h2>Menos ruído. Mais resultado.</h2><p>A Logica Code acredita que presença digital não é sobre seguir modas. É sobre entender o que torna o seu negócio único e transformá-lo em uma experiência clara, rápida e difícil de ignorar.</p><div class="stats"><div class="stat"><strong data-count="24">24h</strong><span>Resposta garantida</span></div><div class="stat"><strong data-count="7">7 dias</strong><span>Entrega máxima*</span></div></div></div><div class="about-card reveal"><div class="quote">“Um bom site não só apresenta sua empresa. Ele começa a trabalhar por ela.”<small>Logica Code / filosofia</small></div></div></div></section>
     <section id="planos" class="section"><div class="wrap"><div class="section-heading reveal"><div><div class="eyebrow">Investimento</div><h2>Escolha o ponto de partida.</h2></div><p>Projetos com escopo transparente. Cada detalhe pode ser adaptado à sua necessidade.</p></div><div class="pricing"><article class="plan featured reveal"><div class="plan-label">Mais procurado</div><h3>Landing page</h3><p class="plan-desc">Uma página estratégica para lançar uma campanha, serviço ou ideia.</p><div class="price"><del>R$ 1.500</del><br>R$ 500</div><ul class="features"><li>Domínio por 2 anos</li><li>Hospedagem por 1 ano</li><li>Design responsivo</li><li>SEO essencial</li><li>Formulário de contato</li></ul><a class="button" href="#contato">Solicitar proposta →</a></article><article class="plan reveal"><div class="plan-label">Completo</div><h3>Institucional</h3><p class="plan-desc">A estrutura completa para contar sua história e gerar novos contatos.</p><div class="price"><del>R$ 2.500</del><br>R$ 1.500</div><ul class="features"><li>Domínio por 2 anos</li><li>Hospedagem por 1 ano</li><li>De 3 a 5 páginas</li><li>Design personalizado</li><li>Blog e formulários</li></ul><a class="button dark" href="#contato">Solicitar proposta →</a></article></div></div></section>
-    <section id="contato" class="contact"><div class="wrap contact-inner"><div class="reveal"><div class="eyebrow">Próximo passo</div><h2>Vamos tirar sua ideia do papel.</h2><p>Conte um pouco sobre o que você precisa. Retornamos em até 24 horas com um caminho claro para o seu projeto.</p></div><form class="contact-form reveal" id="contactForm"><input name="nome" placeholder="Como você se chama?" required><input type="email" name="email" placeholder="Seu melhor e-mail" required><input name="empresa" placeholder="Empresa (opcional)"><textarea name="mensagem" placeholder="Me conte sobre seu projeto" required></textarea><button class="button" type="submit">Enviar mensagem <span>→</span></button><p class="form-note">Ao enviar, você concorda em receber um retorno da Logica Code.</p><p class="status" role="status">Mensagem pronta! Configure seu serviço de formulários para receber os contatos.</p></form></div></section>
-  </main><footer><div class="wrap"><p>© <span id="year"></span> Logica Code. Tecnologia com propósito.</p><p>Feito no Brasil / para crescer</p></div></footer>
+    <section id="contato" class="contact">
+      <div class="wrap contact-inner">
+        <div class="reveal">
+          <div class="eyebrow">Próximo passo</div>
+          <h2>Vamos tirar sua ideia do papel.</h2>
+          <p>Conte um pouco sobre o que você precisa. Retornamos em até 24 horas com um caminho claro para o seu projeto.</p>
+          <p style="margin-top: 20px;">
+            Ou envie direto para: <br>
+            <a href="mailto:contato@logicacode.com.br" style="color: var(--lime); text-decoration: none; font-weight: 700; font-size: 1.1rem;">contato@logicacode.com.br</a>
+          </p>
+        </div>
+        <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/meaoaayd" method="POST">
+          <input name="nome" placeholder="Como você se chama?" required>
+          <input type="email" name="email" placeholder="Seu melhor e-mail" required>
+          <input name="empresa" placeholder="Empresa (opcional)">
+          <textarea name="mensagem" placeholder="Me conte sobre seu projeto" required></textarea>
+          <button class="button" type="submit">Enviar mensagem <span>→</span></button>
+          <p class="form-note">Ao enviar, você concorda em receber um retorno da Logica Code.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">
+      <p>© <span id="year"></span> Logica Code. Tecnologia com propósito.</p>
+      <p><a href="mailto:contato@logicacode.com.br" style="color: var(--muted); text-decoration: none;">contato@logicacode.com.br</a></p>
+    </div>
+  </footer>
   <script>
     const header=document.querySelector('header'),progress=document.querySelector('.progress'),menu=document.querySelector('.menu'),links=document.querySelector('.links');
     addEventListener('scroll',()=>{const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(scrollY/max*100)+'%';header.classList.toggle('scrolled',scrollY>12)},{passive:true});
     menu.addEventListener('click',()=>{const open=links.classList.toggle('open');menu.setAttribute('aria-expanded',open);menu.textContent=open?'FECHAR −':'MENU +'}); links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='MENU +'}));
     const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
     document.getElementById('year').textContent=new Date().getFullYear();
-    document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();e.currentTarget.querySelector('.status').classList.add('show')});
   </script>
 </body>
 </html>
