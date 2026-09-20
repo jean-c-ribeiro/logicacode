@@ -57,6 +57,7 @@
           <textarea name="mensagem" placeholder="Me conte sobre seu projeto" required></textarea>
           <button class="button" type="submit">Enviar mensagem <span>→</span></button>
           <p class="form-note">Ao enviar, você concorda em receber um retorno da Logica Code.</p>
+          <p class="status" role="status"></p>
         </form>
       </div>
     </section>
@@ -73,6 +74,42 @@
     menu.addEventListener('click',()=>{const open=links.classList.toggle('open');menu.setAttribute('aria-expanded',open);menu.textContent=open?'FECHAR −':'MENU +'}); links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='MENU +'}));
     const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
     document.getElementById('year').textContent=new Date().getFullYear();
+    
+    // Novo script para o formulário
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault(); // Impede o redirecionamento padrão
+      const status = contactForm.querySelector('.status');
+      const btn = contactForm.querySelector('button');
+      const btnOriginalText = btn.innerHTML;
+      
+      btn.innerHTML = 'Enviando...';
+      btn.disabled = true;
+      status.classList.remove('show');
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: contactForm.method,
+          body: new FormData(contactForm),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          contactForm.reset(); // Limpa os campos
+          status.textContent = 'Mensagem enviada com sucesso! Obrigado pela preferência.';
+          status.classList.add('show');
+        } else {
+          status.textContent = 'Ocorreu um problema ao enviar. Tente novamente.';
+          status.classList.add('show');
+        }
+      } catch (error) {
+        status.textContent = 'Erro de conexão. Verifique sua internet.';
+        status.classList.add('show');
+      } finally {
+        btn.innerHTML = btnOriginalText;
+        btn.disabled = false;
+      }
+    });
   </script>
 </body>
 </html>
